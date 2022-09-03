@@ -1,12 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"path"
 	"text/template"
+
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -27,6 +30,12 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
+	//image upload folder
+	err = os.MkdirAll(os.Getenv("UP_IMAGE_PATH "), os.ModePerm)
+	if err != nil {
+		http.Error(w, "Folder not found", http.StatusInternalServerError)
+	}
+
 	filename := path.Base(fileHeader.Filename)
 	dest, err := os.Create(filename)
 	if err != nil {
@@ -42,10 +51,21 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
 }
 func main() {
+	envErr := godotenv.Load(".env")
+	if envErr != nil {
+		fmt.Printf("Did not Load env")
+	}
+	// os.setenv()
+	// fmt.Println("Path:", os.Getenv("CALENDAGO_IMAGE_DIR"))
+	// fmt.Printf("PATH: %s", os.Getenv("UP_IMAGE_PATH"))
+
+
 	http.HandleFunc("/", uploadFile)
 
 	log.Println("Server started")
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
 	}
+
+	
 }
