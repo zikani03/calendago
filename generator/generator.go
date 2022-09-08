@@ -3,6 +3,7 @@ package generator
 import (
 	"fmt"
 	"io/ioutil"
+	"path/filepath"
 	"strconv"
 	"time"
 
@@ -183,7 +184,7 @@ func monthToStringNr(month time.Month) string {
 	return "0" + strconv.Itoa(i)
 }
 
-func generateMonth(year int, month time.Month) {
+func generateMonth(workDir string, year int, month time.Month) {
 	// monthly logic
 	dc := gg.NewContext(settings.Width, settings.Height)
 	cwWidthTotal, _ := sizeCalendarWeek()
@@ -216,11 +217,13 @@ func generateMonth(year int, month time.Month) {
 
 	generateMonthGrid(year, month, settings.StartOfTheWeek, dc)
 
-	dc.SavePNG(strconv.Itoa(year) + "_" + monthToStringNr(month) + "_" + month.String() + ".png")
+	imageName := strconv.Itoa(year) + "_" + monthToStringNr(month) + "_" + month.String() + ".png"
+
+	dc.SavePNG(filepath.Join(workDir, imageName))
 }
 
 // Generate creates a set of calendar templates for the given settings
-func Generate(set Settings) {
+func Generate(set Settings, saveToDirectory string) {
 	settings = set
 	year := settings.Year
 
@@ -240,16 +243,16 @@ func Generate(set Settings) {
 		panic(err)
 	}
 
-	generateMonth(year, time.January)
-	generateMonth(year, time.February)
-	generateMonth(year, time.March)
-	generateMonth(year, time.April)
-	generateMonth(year, time.May)
-	generateMonth(year, time.June)
-	generateMonth(year, time.July)
-	generateMonth(year, time.August)
-	generateMonth(year, time.September)
-	generateMonth(year, time.October)
-	generateMonth(year, time.November)
-	generateMonth(year, time.December)
+	generateMonth(saveToDirectory, year, time.January)
+	generateMonth(saveToDirectory, year, time.February)
+	generateMonth(saveToDirectory, year, time.March)
+	generateMonth(saveToDirectory, year, time.April)
+	generateMonth(saveToDirectory, year, time.May)
+	generateMonth(saveToDirectory, year, time.June)
+	generateMonth(saveToDirectory, year, time.July)
+	generateMonth(saveToDirectory, year, time.August)
+	generateMonth(saveToDirectory, year, time.September)
+	generateMonth(saveToDirectory, year, time.October)
+	generateMonth(saveToDirectory, year, time.November)
+	generateMonth(saveToDirectory, year, time.December)
 }
