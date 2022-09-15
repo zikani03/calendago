@@ -35,14 +35,14 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		file, err : fileHeader.Open()
+		file, err := fileHeader.Open()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
 		defer files.Close()
 
-		_, err := files.Seek(0, io.SeekStart)
+		, err := files.Seek(0, io.SeekStart)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
