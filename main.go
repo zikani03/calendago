@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"path"
+	"path/filepath"
+	"strconv"
 	"text/template"
 
 	"github.com/joho/godotenv"
@@ -23,14 +25,32 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 func handleUpload(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(10 << 20)
 
-	files, fileHeader, err := r.FormFile("image")
+	//image upload folder
+	err := os.MkdirAll(os.Getenv("CALENDAGO_WORK_DIR"), os.ModePerm)
 	if err != nil {
-		http.Error(w, "Bad Requeat", http.StatusBadRequest)
+		http.Error(w, "Folder not found", http.StatusInternalServerError)
 		return
 	}
-	//upload multiple images
-	for _, fileHeader := range files {
-		if fileHeader.Size > os.Getenv("CALENDAGO_MAX_FILE_SIZE") {
+
+	form := r.MultipartForm
+
+	// handle multiple images in the "image" field of the request
+	imageFiles, ok := form.File["image"]
+	if !ok {
+		fmt.Println("No images detected in the request")
+		http.Error(w, fmt.Errorf("no images detected").Error(), http.StatusInternalServerError)
+		return
+	}
+
+	maxFileSize, err := strconv.Atoi(os.Getenv("CALENDAGO_MAX_FILE_SIZE"))
+	if err != nil {
+		// default if env var is not set
+		maxFileSize = 30000
+	}
+
+	for _, fileHeader := range imageFiles {
+		fmt.Println(fileHeader.Filename)
+		if fileHeader.Size > int64(maxFileSize) {
 			http.Error(w, "file too big", http.StatusBadRequest)
 			return
 		}
@@ -40,22 +60,18 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		defer files.Close()
+		defer file.Close()
 
-		_, err = files.Seek(0, io.SeekStart)
+		_, err = file.Seek(0, io.SeekStart)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		
-
-		//image upload folder
-		err = os.MkdirAll(os.Getenv("CALENDAGO_WORK_DIR"), os.ModePerm)
-		if err != nil {
-			http.Error(w, "Folder not found", http.StatusInternalServerError)
-		}
 
 		filename := path.Base(fileHeader.Filename)
+
+		filename = filepath.Join(os.Getenv("CALENDAGO_WORK_DIR"), filename)
+
 		dest, err := os.Create(filename)
 		if err != nil {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -63,14 +79,14 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 		}
 		defer dest.Close()
 
-		if _, err = io.Copy(dest, files); err != nil {
+		if _, err = io.Copy(dest, file); err != nil {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 			return
 		}
-		http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
-		}	
-}
+	}
 
+	http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
+}
 
 func main() {
 	envErr := godotenv.Load(".env")
@@ -81,13 +97,12 @@ func main() {
 	// fmt.Println("Path:", os.Getenv("CALENDAGO_IMAGE_DIR"))
 	// fmt.Printf("PATH: %s", os.Getenv("UP_IMAGE_PATH"))
 
-
 	http.HandleFunc("/", uploadFile)
+	http.HandleFunc("/upload", handleUpload)
 
 	log.Println("Server started")
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
 	}
 
-	
 }
