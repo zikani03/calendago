@@ -8,8 +8,46 @@
 </head>
 <body>
     <h1>File Upload</h1>
-    <form enctype="multipart/form-data" action="upload" method="post">
-        <input type="file" name="image" />
+    <form enctype="multipart/form-data" action="calendar" method="post">
+        <div class="field">
+            <label for="Year">Year</label>
+            <input type="number" name="Year" id="Year" placeholder="Year" />
+        </div>
+        <div class="field">
+            <label for="Width">Width</label>
+            <input type="number" name="Width" id="Width" placeholder="Width" />
+        </div>
+        <div class="field">
+            <label for="Height">Height</label>
+            <input type="number" name="Height" id="Height" placeholder="Height" />
+        </div>
+        <div class="field">
+            <label for="MarginLeft">MarginLeft</label>
+            <input type="number" name="MarginLeft" id="MarginLeft" placeholder="MarginLeft" />
+        </div>
+        <div class="field">
+            <label for="MarginRight">MarginRight</label>
+            <input type="number" name="MarginRight" id="MarginRight" placeholder="MarginRight" />
+        </div>
+        <div class="field">
+            <label for="MarginTop">MarginTop</label>
+            <input type="number" name="MarginTop" id="MarginTop" placeholder="MarginTop" />
+        </div>
+        <div class="field">
+            <label for="MarginBottom">MarginBottom</label>
+            <input type="number" name="MarginBottom" id="MarginBottom" placeholder="MarginBottom" />
+        </div>
+        <div class="field">
+            <label for="HeaderFont">HeaderFont</label>
+            <input type="text" name="HeaderFont" id="HeaderFont" placeholder="HeaderFont" />
+        </div>
+        <div class="field">
+            <label for="HeaderFontSize">HeaderFontSize</label>
+            <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="HeaderFontSize" />
+        </div>
+
+        <input type="file" name="image"  multiple/>
+
         <button type="submit">Upload</button>
     </form>
 </body>

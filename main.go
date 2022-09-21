@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -14,6 +13,7 @@ import (
 	"strconv"
 	"strings"
 	"text/template"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/signintech/gopdf"
@@ -43,7 +43,23 @@ func uploadFile(w http.ResponseWriter, r *http.Request) {
 	templateFile.ExecuteTemplate(w, "index.html", nil)
 }
 
-func handleUpload(w http.ResponseWriter, r *http.Request) {
+func MustAtoi(val string) int {
+	i, err := strconv.Atoi(val)
+	if err != nil {
+		panic(err)
+	}
+	return i
+}
+
+func MustAtoiOrDefault(val string, orElse int) int {
+	i, err := strconv.Atoi(val)
+	if err != nil {
+		return orElse
+	}
+	return i
+}
+
+func handleUploadAndGenerateCalendar(w http.ResponseWriter, r *http.Request) {
 	r.ParseMultipartForm(10 << 20)
 
 	//image upload folder
@@ -54,6 +70,32 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 	}
 
 	form := r.MultipartForm
+
+	year, err := strconv.Atoi(r.FormValue("Year"))
+	if r.FormValue("Year") == "" || err != nil {
+		http.Error(w, "Please specify Year", http.StatusBadRequest)
+		return
+	}
+
+	fontName := "arial"
+	if r.FormValue("HeaderFont") != "" {
+		fontName = r.FormValue("HeaderFont")
+	}
+	// todo: find out if fiber has this binding for multipart forms
+	var settings = generator.Settings{
+		Year:              year,
+		Width:             MustAtoiOrDefault(r.FormValue("Width"), 1404),
+		Height:            MustAtoiOrDefault(r.FormValue("Height"), 1872),
+		MarginLeft:        MustAtoiOrDefault(r.FormValue("MarginLeft"), 100),
+		MarginRight:       MustAtoiOrDefault(r.FormValue("MarginRight"), 10),
+		MarginTop:         MustAtoiOrDefault(r.FormValue("MarginTop"), 5),
+		MarginBottom:      MustAtoiOrDefault(r.FormValue("MarginBottom"), 200),
+		HeaderFont:        fontName,
+		HeaderFontSize:    MustAtoiOrDefault(r.FormValue("HeaderFontSize"), 25),
+		StartOfTheWeek:    time.Monday,    // TODO r.FormValue("StartOfTheWeek"),
+		CalendarWeek:      generator.None, //r.FormValue("CalendarWeek"),
+		CalendarWeekColor: 0.0,
+	}
 
 	// handle multiple images in the "image" field of the request
 	imageFiles, ok := form.File["image"]
@@ -106,23 +148,6 @@ func handleUpload(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
-}
-
-func generateCalendar(w http.ResponseWriter, r *http.Request) {
-	// load layout setting and parse them into an object
-	var settings generator.Settings
-	data, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
-	err = json.Unmarshal(data, &settings)
-	if err != nil {
-		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
-		return
-	}
-
 	// generate the calendar pages
 	generator.Generate(settings, os.Getenv("CALENDAGO_WORK_DIR"))
 
@@ -150,6 +175,7 @@ func generateCalendar(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Disposition", "filename=calendar.pdf")
 	w.Header().Add("Content-Type", "application/pdf")
 	w.Write(pdfData)
+	//http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
 }
 
 func main() {
@@ -160,12 +186,10 @@ func main() {
 	}
 
 	http.HandleFunc("/", uploadFile)
-	http.HandleFunc("/upload", handleUpload)
-	http.HandleFunc("/calendar", generateCalendar)
+	http.HandleFunc("/calendar", handleUploadAndGenerateCalendar)
 
 	log.Println("Server started")
 	if err := http.ListenAndServe(":8000", nil); err != nil {
 		log.Fatal(err)
 	}
-
 }
