@@ -31,30 +31,9 @@ We will also experiment with making it a Serverless service which can be used on
 
 ### Configuration
 
-Calendago will be configured via command-line flags when starting the program or Environment variables.
+Calendago will be configured via a `.env` file.
 
-The following concept environment variables, subject to change
-
-```shell
-#/bin/sh
-
-# .env 
-# Hostname or interface to bind to
-CALENDAGO_HOST="localhost"
-# Port to bind to 
-CALENDAGO_PORT="8000"
-# Maximum file size for image uploads
-CALENDAGO_MAX_FILE_SIZE="10m"
-# The database file path for either SQLite or BoltDB 
-CALENDAGO_DB_FILE="./calendago.db"
-# Domains to allow Cross-Origin Requests from (for the UI)
-CALENDAGO_CORS_DOMAINS="calendago.com"
-# Working directory where files are stored and generated
-CALENDAGO_WORK_DIR="/tmp/calendago/"
-# Schedule for how frequently to clean the working directory (remove files from disk)
-CALENDAGO_CLEAN_WORK_DIR_AFTER="2h"
-```
-
+Please see `.env.example` for reference
 
 ## ROADMAP
 

@@ -189,7 +189,13 @@ func main() {
 	http.HandleFunc("/calendar", handleUploadAndGenerateCalendar)
 
 	log.Println("Server started")
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+
+	address := os.Getenv("CALENDAGO_ADDRESS")
+	if address == "" {
+		address = "localhost:8001"
+	}
+
+	if err := http.ListenAndServe(address, nil); err != nil {
 		log.Fatal(err)
 	}
 }
