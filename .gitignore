@@ -16,3 +16,5 @@
 *credentials.json
 *token.json
 .env
+data/
+concept/
