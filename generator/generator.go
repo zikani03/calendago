@@ -62,7 +62,8 @@ func drawCell(x float64, y float64, date int, dc *gg.Context) {
 		dc.DrawStringAnchored(strconv.Itoa(date), x, y, -0.2, 1.2)
 	} else {
 		dc.DrawRectangle(x, y, cellWidth, cellHeight)
-		dc.SetRGB(0.8, 0.8, 0.8)
+		// dc.SetRGB(0.8, 0.8, 0.8)
+		dc.SetRGB(0.8, 1, 1)
 		dc.Fill()
 	}
 
@@ -154,7 +155,8 @@ func generateWeekHeader(startDay time.Weekday, dc *gg.Context) float64 {
 	}
 
 	for i := 0; i < 7; i++ {
-		dc.SetRGB(0, 0, 0)
+		// dc.SetRGB(0, 0, 0)
+		dc.SetRGB(0, 0, 1)
 		dc.DrawStringAnchored(t.AddDate(0, 0, i+offset).Weekday().String(), float64(i)*cellWidth+cellWidth/2, float64(settings.HeaderFontSize), 0.5, 0.5)
 		dc.DrawRectangle(float64(i)*cellWidth, 0, cellWidth, float64(settings.HeaderFontSize)*2)
 		dc.Stroke()
@@ -198,10 +200,12 @@ func generateMonth(workDir string, year int, month time.Month) {
 	}
 	cellWidth = (float64(settings.Width-settings.MarginLeft-settings.MarginRight) - cwWidthTotal) / 7
 
-	dc.SetRGB(1, 1, 1)
+	// dc.SetRGB(1, 1, 1)
+	dc.SetRGB(1, 1, 0)
 	dc.Clear()
 
-	dc.SetRGB(0, 0, 0)
+	// dc.SetRGB(0, 0, 0)
+	dc.SetRGB(0, 0, 1)
 
 	face := truetype.NewFace(font, &truetype.Options{Size: 48})
 	dc.SetFontFace(face)
