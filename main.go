@@ -15,8 +15,11 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"
 	"github.com/signintech/gopdf"
+
 	"github.com/zikani03/calendago/generator"
 )
 
@@ -39,7 +42,7 @@ func getAllImages(year int) ([]string, error) {
 	return files, nil
 }
 
-func uploadFile(w http.ResponseWriter, r *http.Request) {
+func renderIndexPage(w http.ResponseWriter, r *http.Request) {
 	templateFile.ExecuteTemplate(w, "index.html", nil)
 }
 
@@ -179,13 +182,18 @@ func handleUploadAndGenerateCalendar(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
 	envErr := godotenv.Load(".env")
 	if envErr != nil {
 		fmt.Printf("Please configure via a .env file")
 		return
 	}
 
-	http.HandleFunc("/calendar", handleUploadAndGenerateCalendar)
+	r := chi.NewRouter()
+	r.Use(middleware.Logger)
+
+	r.Get("/", renderIndexPage)
+	r.Post("/calendar", handleUploadAndGenerateCalendar)
 
 	log.Println("Server started")
 
@@ -194,7 +202,7 @@ func main() {
 		address = "localhost:8001"
 	}
 
-	if err := http.ListenAndServe(address, nil); err != nil {
+	if err := http.ListenAndServe(address, r); err != nil {
 		log.Fatal(err)
 	}
 }

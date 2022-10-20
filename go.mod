@@ -11,6 +11,8 @@ require (
 	muzzammil.xyz/jsonc v0.0.0-20201229145248-615b0916ca38
 )
 
+require github.com/go-chi/chi/v5 v5.0.7
+
 require (
 	github.com/joho/godotenv v1.4.0
 	github.com/phpdave11/gofpdi v1.0.13 // indirect
