@@ -108,7 +108,7 @@ func handleUploadAndGenerateCalendar(w http.ResponseWriter, r *http.Request) {
 	maxFileSize, err := strconv.Atoi(os.Getenv("CALENDAGO_MAX_FILE_SIZE"))
 	if err != nil {
 		// default if env var is not set
-		maxFileSize = 30000
+		maxFileSize = 3_000_000
 	}
 
 	for _, fileHeader := range imageFiles {
@@ -185,7 +185,6 @@ func main() {
 		return
 	}
 
-	http.HandleFunc("/", uploadFile)
 	http.HandleFunc("/calendar", handleUploadAndGenerateCalendar)
 
 	log.Println("Server started")

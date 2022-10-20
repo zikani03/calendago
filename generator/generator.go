@@ -14,6 +14,7 @@ import (
 )
 
 type CalendarWeek string
+type MonthImageMap map[time.Month]string
 
 const (
 	None  CalendarWeek = "None"
@@ -40,6 +41,8 @@ type Settings struct {
 
 	CalendarWeek      CalendarWeek
 	CalendarWeekColor float64
+
+	MonthImages MonthImageMap
 }
 
 var settings Settings
