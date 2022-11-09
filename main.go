@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -24,7 +25,8 @@ import (
 )
 
 var (
-	templateFile = template.Must(template.ParseFiles("static/index.html"))
+	templateFile     = template.Must(template.ParseFiles("static/index.html"))
+	calendarTemplate = template.Must(template.ParseFiles("static/calendar.html"))
 )
 
 func getAllImages(year int) ([]string, error) {
@@ -175,9 +177,16 @@ func handleUploadAndGenerateCalendar(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
-	w.Header().Add("Content-Disposition", "filename=calendar.pdf")
-	w.Header().Add("Content-Type", "application/pdf")
-	w.Write(pdfData)
+	// w.Header().Add("Content-Disposition", "filename=calendar.pdf")
+	// w.Header().Add("Content-Type", "application/pdf")
+	// w.Write(pdfData)
+
+	base64Encoded := base64.StdEncoding.EncodeToString(pdfData)
+	calendarTemplate.ExecuteTemplate(w, "calendar.html", struct {
+		Base64EncodedFileData string
+	}{
+		Base64EncodedFileData: base64Encoded,
+	})
 	//http.Redirect(w, r, "/?Succes=true", http.StatusSeeOther)
 }
 
