@@ -6,55 +6,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendago</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <style>
+        
+    </style>
+   
 </head>
 <body>
 
-    <div class="container">
-        <h1>Generate a Custom Calendar</h1>
-        <form enctype="multipart/form-data" action="calendar" method="post">
-            <div class="field">
-                <label for="Year">Year</label>
-                <input type="number" name="Year" id="Year" placeholder="Year" />
-            </div>
-            <div class="field">
-                <label for="Width">Width</label>
-                <input type="number" name="Width" id="Width" placeholder="Width" />
-            </div>
-            <div class="field">
-                <label for="Height">Height</label>
-                <input type="number" name="Height" id="Height" placeholder="Height" />
-            </div>
-            <div class="field">
-                <label for="MarginLeft">MarginLeft</label>
-                <input type="number" name="MarginLeft" id="MarginLeft" placeholder="MarginLeft" />
-            </div>
-            <div class="field">
-                <label for="MarginRight">MarginRight</label>
-                <input type="number" name="MarginRight" id="MarginRight" placeholder="MarginRight" />
-            </div>
-            <div class="field">
-                <label for="MarginTop">MarginTop</label>
-                <input type="number" name="MarginTop" id="MarginTop" placeholder="MarginTop" />
-            </div>
-            <div class="field">
-                <label for="MarginBottom">MarginBottom</label>
-                <input type="number" name="MarginBottom" id="MarginBottom" placeholder="MarginBottom" />
-            </div>
-            <div class="field">
-                <label for="HeaderFont">HeaderFont</label>
-                <input type="text" name="HeaderFont" id="HeaderFont" placeholder="HeaderFont" />
-            </div>
-            <div class="field">
-                <label for="HeaderFontSize">HeaderFontSize</label>
-                <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="HeaderFontSize" />
+ 
+
+
+     <!-- contact form -->
+  <section id="contact  ">
+    <div class="container-xxl "  >
+        
+      <div class="text-center py-5">
+        <img src="../img/squre.jpg" width="200" class="rounded mx-auto d-block" alt="...">
+        <h2 class="display-5 fw-bold">Generate a Custom Calendar</h2>
+        <p class="display-6">Choose the presets for your calender...</p>
+      </div>
+   
+      <div class="row justify-content-center my-">
+        <div class="col-lg-6">
+          
+          <form>
+            <label for="Year" class="form-label col-sm-2 col-form-label col-form-label-lg" >Year:</label>
+            <div class="input-group mb-2">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-calendar2-week-fill text-light"></i>
+              </span>
+              <input type="number" name="Year" id="Year" placeholder="Year" class="form-control" />
             </div>
 
-            <label for="image">Upload Images Here to be used on the Calendar</label>
-            <input type="file" name="image"  multiple/>
+            <label for="Width" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Width:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="Width" id="Width" placeholder="Width" class="form-control" />
+            </div>
 
-            <button type="submit">Upload</button>
-        </form>
+            <label for="Height" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Height:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="Height" id="Height" placeholder="Height" class="form-control" />
+            </div>
+
+            <label for="MarginLeft" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginLeft:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="MarginLeft" id="MarginLeft" placeholder="Margin Left" class="form-control" />
+            </div>
+
+            <label for="MarginRight" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginRight:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="MarginRight" id="MarginRight" placeholder="Margin Right" class="form-control" />
+            </div>
+
+            <label for="MarginTop" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginTop:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="MarginTop" id="MarginTop" placeholder="Margin Top" class="form-control" />
+            </div>
+
+            <label for="MarginBottom" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginBottom:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="number" name="MarginBottom" id="MarginBottom" placeholder="Margin Bottom" class="form-control" />
+            </div>
+
+            <label for="HeaderFont" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFont:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-bounding-box-circles text-light"></i>
+              </span>
+              <input type="text" name="HeaderFont" id="HeaderFont" placeholder="Header Font" class="form-control" />
+            </div>
+
+            <label for="HeaderFontSize" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFontSize:</label>
+            <div class="mb-2 input-group">
+              <span class="input-group-text bg-success">
+                <i class="bi bi-file-font-fill text-light"></i>
+              </span>
+              <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="Header Font Size" class="form-control" />
+            </div>
+
+            <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Upload Images Here to be used on the Calendar:</label>
+            <div class="mb-2 input-group ">
+                <span class="input-group-text bg-success">
+                    <i class="bi bi-image-fill text-light"></i>
+                  </span>
+              <input type="file"  name="image"  multiple class="form-control" />
+            </div>
+        
+
+           
+            <div class="mb-4 text-center">
+              <button type="submit" type="submit" class="btn btn-danger">Upload</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
