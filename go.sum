@@ -16,6 +16,8 @@ github.com/phpdave11/gofpdi v1.0.13/go.mod h1:vBmVV0Do6hSBHC8uKUQ71JGW+ZGQq74llk
 github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/rickar/cal/v2 v2.1.10 h1:1Y1gUoRnzs61pVOmcdSX2pfgBzwFo4OuBNf/ucjqElQ=
+github.com/rickar/cal/v2 v2.1.10/go.mod h1:/fdlMcx7GjPlIBibMzOM9gMvDBsrK+mOtRXdTzUqV/A=
 github.com/signintech/gopdf v0.9.12 h1:7Div65CTQVA6auXukSh3fa1pKgLct2cgKMpXQdtNlmQ=
 github.com/signintech/gopdf v0.9.12/go.mod h1:MrARAC6LaOgbnV6vrC5885VuoWCXazhAqx8L8zmjYy4=
 golang.org/x/image v0.0.0-20201208152932-35266b937fa6 h1:nfeHNc1nAqecKCy2FCy4HY+soOOe5sDLJ/gZLbx6GYI=

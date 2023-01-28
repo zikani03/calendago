@@ -41,78 +41,94 @@
               <input type="number" name="Year" id="Year" placeholder="Year" class="form-control" />
             </div>
 
-            <label for="Width" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Width:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="Width" id="Width" placeholder="Width" class="form-control" />
+
+            <div class="form-group">
+              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Upload Images Here to be used on the Calendar:</label>
+              <div class="mb-2 input-group ">
+                  <span class="input-group-text bg-success">
+                      <i class="bi bi-image-fill text-light"></i>
+                    </span>
+                <input type="file"  name="image"  multiple class="form-control" />
+              </div>
             </div>
 
-            <label for="Height" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Height:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="Height" id="Height" placeholder="Height" class="form-control" />
+            <div class="form-group">
+              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Use Holidays from Country:</label>
+              <div class="mb-2 input-group">
+                <select name="countryISO" id="countryISO" class="form-control select form-select">
+                  <option value="none">None</option >
+                  <option value="MWI">Malawi</option >
+                </select>
+              </div>
             </div>
 
-            <label for="MarginLeft" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginLeft:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="MarginLeft" id="MarginLeft" placeholder="Margin Left" class="form-control" />
-            </div>
-
-            <label for="MarginRight" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginRight:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="MarginRight" id="MarginRight" placeholder="Margin Right" class="form-control" />
-            </div>
-
-            <label for="MarginTop" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginTop:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="MarginTop" id="MarginTop" placeholder="Margin Top" class="form-control" />
-            </div>
-
-            <label for="MarginBottom" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginBottom:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="number" name="MarginBottom" id="MarginBottom" placeholder="Margin Bottom" class="form-control" />
-            </div>
-
-            <label for="HeaderFont" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFont:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-bounding-box-circles text-light"></i>
-              </span>
-              <input type="text" name="HeaderFont" id="HeaderFont" placeholder="Header Font" class="form-control" />
-            </div>
-
-            <label for="HeaderFontSize" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFontSize:</label>
-            <div class="mb-2 input-group">
-              <span class="input-group-text bg-success">
-                <i class="bi bi-file-font-fill text-light"></i>
-              </span>
-              <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="Header Font Size" class="form-control" />
-            </div>
-
-            <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Upload Images Here to be used on the Calendar:</label>
-            <div class="mb-2 input-group ">
+            <div class="accordion" style="display: none;">
+            <div class="accordion-item collapsed">
+              <label for="Width" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Width:</label>
+              <div class="mb-2 input-group">
                 <span class="input-group-text bg-success">
-                    <i class="bi bi-image-fill text-light"></i>
-                  </span>
-              <input type="file"  name="image"  multiple class="form-control" />
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="Width" id="Width" placeholder="Width" class="form-control" />
+              </div>
+
+              <label for="Height" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Height:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="Height" id="Height" placeholder="Height" class="form-control" />
+              </div>
+
+              <label for="MarginLeft" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginLeft:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="MarginLeft" id="MarginLeft" placeholder="Margin Left" class="form-control" />
+              </div>
+
+              <label for="MarginRight" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginRight:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="MarginRight" id="MarginRight" placeholder="Margin Right" class="form-control" />
+              </div>
+
+              <label for="MarginTop" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginTop:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="MarginTop" id="MarginTop" placeholder="Margin Top" class="form-control" />
+              </div>
+
+              <label for="MarginBottom" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginBottom:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="number" name="MarginBottom" id="MarginBottom" placeholder="Margin Bottom" class="form-control" />
+              </div>
+
+              <label for="HeaderFont" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFont:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-bounding-box-circles text-light"></i>
+                </span>
+                <input type="text" name="HeaderFont" id="HeaderFont" placeholder="Header Font" class="form-control" />
+              </div>
+
+              <label for="HeaderFontSize" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFontSize:</label>
+              <div class="mb-2 input-group">
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-file-font-fill text-light"></i>
+                </span>
+                <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="Header Font Size" class="form-control" />
+              </div>
             </div>
-        
+            </div>
 
            
             <div class="mb-4 text-center">
@@ -123,6 +139,13 @@
       </div>
     </div>
   </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+      document.getElementById('Year').value = (new Date()).getFullYear() + 1
+    })
+  </script>
 </body>
 </html>

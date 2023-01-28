@@ -2,7 +2,6 @@
 
 > NOTE: Work in Progress
 
-
 ## Note for Collaborators
 
 - Contribute changes via pull-requests wherever possible, choose appropriate name for your branch :)
@@ -26,5 +25,5 @@ $ ./calendago
 
 ## Credits
 
-This is a fork of [floAr/calendargo](https://github.com/floAr/calendargo) 
-
+- [floAr/calendargo](https://github.com/floAr/calendargo) - provided a starting point for generating calendar
+- 
