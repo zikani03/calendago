@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendago</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <!-- Bootstrap Font Icon CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <style>
-        
-    </style>
-   
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendago</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- Bootstrap Font Icon CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <style>
+
+  </style>
+
 </head>
+
 <body>
 
- 
 
 
-     <!-- contact form -->
+
+  <!-- contact form -->
   <section id="contact  ">
-    <div class="container-xxl "  >
-        
+    <div class="container-xxl ">
+
       <div class="text-center py-5">
         <img src="../img/squre.jpg" width="200" class="rounded mx-auto d-block" alt="...">
         <h2 class="display-5 fw-bold">Generate a Custom Calendar</h2>
         <p class="display-6">Choose the presets for your calender...</p>
       </div>
-   
+
       <div class="row justify-content-center my-">
         <div class="col-lg-6">
-          
+
           <form enctype="multipart/form-data" action="/calendar" method="post">
 
-            <label for="Year" class="form-label col-sm-2 col-form-label col-form-label-lg" >Year:</label>
+            <label for="Year" class="form-label col-sm-2 col-form-label col-form-label-lg">Year:</label>
             <div class="input-group mb-2">
               <span class="input-group-text bg-success">
                 <i class="bi bi-calendar2-week-fill text-light"></i>
@@ -43,103 +46,134 @@
 
 
             <div class="form-group">
-              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Upload Images Here to be used on the Calendar:</label>
+              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Upload
+                Images Here to be used on the Calendar:</label>
               <div class="mb-2 input-group ">
-                  <span class="input-group-text bg-success">
-                      <i class="bi bi-image-fill text-light"></i>
-                    </span>
-                <input type="file"  name="image"  multiple class="form-control" />
+                <span class="input-group-text bg-success">
+                  <i class="bi bi-image-fill text-light"></i>
+                </span>
+                <input type="file" name="image" multiple class="form-control" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Use Holidays from Country:</label>
+              <label for="image" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Use
+                Holidays from Country:</label>
               <div class="mb-2 input-group">
                 <select name="countryISO" id="countryISO" class="form-control select form-select">
-                  <option value="none">None</option >
-                  <option value="MWI">Malawi</option >
+                  <option value="none">None</option>
+                  <option value="MWI">Malawi</option>
                 </select>
               </div>
             </div>
 
-            <div class="accordion" style="display: none;">
-            <div class="accordion-item collapsed">
-              <label for="Width" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Width:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="Width" id="Width" placeholder="Width" class="form-control" />
-              </div>
-
-              <label for="Height" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">Height:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="Height" id="Height" placeholder="Height" class="form-control" />
-              </div>
-
-              <label for="MarginLeft" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginLeft:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="MarginLeft" id="MarginLeft" placeholder="Margin Left" class="form-control" />
-              </div>
-
-              <label for="MarginRight" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginRight:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="MarginRight" id="MarginRight" placeholder="Margin Right" class="form-control" />
-              </div>
-
-              <label for="MarginTop" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginTop:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="MarginTop" id="MarginTop" placeholder="Margin Top" class="form-control" />
-              </div>
-
-              <label for="MarginBottom" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">MarginBottom:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="number" name="MarginBottom" id="MarginBottom" placeholder="Margin Bottom" class="form-control" />
-              </div>
-
-              <label for="HeaderFont" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFont:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-bounding-box-circles text-light"></i>
-                </span>
-                <input type="text" name="HeaderFont" id="HeaderFont" placeholder="Header Font" class="form-control" />
-              </div>
-
-              <label for="HeaderFontSize" class="form-label" class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFontSize:</label>
-              <div class="mb-2 input-group">
-                <span class="input-group-text bg-success">
-                  <i class="bi bi-file-font-fill text-light"></i>
-                </span>
-                <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="Header Font Size" class="form-control" />
+          <div class="accordion" id="advancedOptionsAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  More Options
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                
+                  <div class="accordion-content-stuff">
+                    <div class="advanced-options">
+                      <label for="Width" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">Width:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="Width" id="Width" placeholder="Width" class="form-control" />
+                      </div>
+      
+                      <label for="Height" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">Height:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="Height" id="Height" placeholder="Height" class="form-control" />
+                      </div>
+      
+                      <label for="MarginLeft" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">MarginLeft:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="MarginLeft" id="MarginLeft" placeholder="Margin Left"
+                          class="form-control" />
+                      </div>
+      
+                      <label for="MarginRight" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">MarginRight:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="MarginRight" id="MarginRight" placeholder="Margin Right"
+                          class="form-control" />
+                      </div>
+      
+                      <label for="MarginTop" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">MarginTop:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="MarginTop" id="MarginTop" placeholder="Margin Top" class="form-control" />
+                      </div>
+      
+                      <label for="MarginBottom" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">MarginBottom:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="number" name="MarginBottom" id="MarginBottom" placeholder="Margin Bottom"
+                          class="form-control" />
+                      </div>
+      
+                      <label for="HeaderFont" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFont:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-bounding-box-circles text-light"></i>
+                        </span>
+                        <input type="text" name="HeaderFont" id="HeaderFont" placeholder="Header Font" class="form-control" />
+                      </div>
+      
+                      <label for="HeaderFontSize" class="form-label"
+                        class="form-label col-sm-2 col-form-label col-form-label-lg">HeaderFontSize:</label>
+                      <div class="mb-2 input-group">
+                        <span class="input-group-text bg-success">
+                          <i class="bi bi-file-font-fill text-light"></i>
+                        </span>
+                        <input type="number" name="HeaderFontSize" id="HeaderFontSize" placeholder="Header Font Size"
+                          class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
               </div>
             </div>
-            </div>
+          </div>
 
-           
-            <div class="mb-4 text-center">
-              <button type="submit" type="submit" class="btn btn-danger">Upload</button>
+
+            <div class="mt-4 text-center">
+              <button type="submit" type="submit" class="btn btn-primary btn-lg">Get Your Calendar </button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </section>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
 
   <script type="text/javascript">
 
@@ -148,4 +182,5 @@
     })
   </script>
 </body>
+
 </html>
